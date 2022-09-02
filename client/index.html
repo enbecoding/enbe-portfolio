@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="httpsL//kit.fontawesone.com/b99e675b6e.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // https://dashboard.emailjs.com/admin/account
+            emailjs.init('2VSijLSpCppZ3TjW6');
+        })();
+    </script>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                // generate a five digit number for the contact_number variable
+                this.contact_number.value = Math.random() * 100000 | 0;
+                // these IDs from the previous steps
+                emailjs.sendForm('contact_service', 'contact_form', this)
+                    .then(function() {
+                        console.log('SUCCESS!');
+                    }, function(error) {
+                        console.log('FAILED...', error);
+                    });
+            });
+        }
+    </script>
+    
+    <title>My Portfolio</title>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="left">
+            <img src="images/image0.jpeg" alt="Picture of Me" width="100">
+            <h4>Brandon Hoang</h4>
+            <p>Web Developer</p>
+            
+            <div class="socialmedia">
+                <a href="https://github.com/enbecoding">
+                <img src="./images/GitHub-Mark.png" alt="github icon" width="75"></a>
+                <a href="https://www.linkedin.com/in/brandon-enbe-hoang/">
+                    <img src="./images/Linkedin Icon.png" alt="linkedin" width="75">
+                </a>
+            </div>
+            
+        </div>
+        <div class="right">
+
+            <div class="info">
+                <h3>E N B E C O D I N G</h3>
+                <div class="info-data">
+                    <div class="data">
+                        <h4>Email</h4>
+                        <p>brandon.nhoang@gmail.com</p>
+                        <form id="contact-form">
+                            <input type="hidden" name="contact_number">
+                            <label>Name</label>
+                            <input type="text" name="user_name">
+                            <label>Email</label>
+                            <input type="email" name="user_email">
+                            <label>Message</label>
+                            <textarea name="message"></textarea>
+                            <input type="submit" value="Send">
+                        </form>
+                    </div>
+                    <div class="data">
+                        <h2>About Me</h2>
+                        <p>I am a currently a student at Devmountain studying webdev. I'm looking to pursue a career in the vast field of tech and have discovered an interest in coding.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="Projects">
+                <h3>Projects</h3>
+                <div class="projects-data">
+                    <div class="data">
+                        <img src="./images/first-project.jpg" alt="My Day Today" width="400">
+                        <p>Here is my first project created with HTML, CSS, and JS. Within this project, I used axios to make calls to a backend server pulling data from a temporary JSON database - Allowing a user to create a to-do list that can organize their weekly tasks as well as make journal entries in the form of posts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
